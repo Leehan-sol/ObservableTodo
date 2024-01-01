@@ -9,8 +9,8 @@ import UIKit
 
 class DoneView: UIView {
     
-    // MARK: - UI Properties
-    let doneTableView: UITableView = {
+    // MARK: - UI Components
+    let tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
         return tableView
@@ -27,18 +27,19 @@ class DoneView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Func
+    // MARK: - Method
     private func setUI(){
-        addSubview(doneTableView)
-        self.backgroundColor = .systemBackground
+        backgroundColor = .systemBackground
         
-        doneTableView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(tableView)
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            doneTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            doneTableView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            doneTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            doneTableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

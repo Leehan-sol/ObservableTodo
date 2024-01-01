@@ -9,25 +9,8 @@ import UIKit
 
 class TodoViewController: UIViewController {
     
-    // MARK: - UI Component
-    private let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
-    }()
-    
-    private let addButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("할일추가", for: .normal)
-        button.tintColor = .black
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
-        return button
-    }()
-    
-    
     // MARK: - Properties
+    private let todoView = TodoView()
     private let viewModel: ObservableVMProtocol
     
     // 0. 의존성 주입을 통해 ClosureViewModel 전달 (의존성 제거)
@@ -40,44 +23,34 @@ class TodoViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func loadView() {
+        view = todoView
+    }
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
+        setAddTarget()
         setTableView()
         setBindings()
     }
     
     
     // MARK: - Method
-    private func setUI(){
-        view.backgroundColor = .systemBackground
-        
-        view.addSubview(tableView)
-        view.addSubview(addButton)
-        
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
-            
-            addButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 8),
-            addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
+    private func setAddTarget() {
+        todoView.addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
     }
     
-    private func setTableView(){
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: "customCell")
+    private func setTableView() {
+        todoView.tableView.delegate = self
+        todoView.tableView.dataSource = self
+        todoView.tableView.register(TableViewCell.self, forCellReuseIdentifier: "customCell")
     }
     
     // 5. 뷰모델의 observableTodo.bind 정의, Observable.value값이 변하면 실행됨
     private func setBindings(){
         viewModel.observableTodo.bind { [weak self] todo in
-            self?.tableView.reloadData()
+            self?.todoView.tableView.reloadData()
         }
     }
     
@@ -118,6 +91,7 @@ extension TodoViewController: UITableViewDelegate {
     
 }
 
+
 // MARK: - UITableViewDelegate
 extension TodoViewController: UITableViewDataSource {
     
@@ -136,11 +110,10 @@ extension TodoViewController: UITableViewDataSource {
         
         cell.todoLabel.text = viewModel.todoDescription(indexPath.row)
         
+        // ✨ 버튼 이미지 구하는 로직도 뷰모델로 빼기
         let isCompleted = viewModel.todoCompleted(at: indexPath.row)
         let buttonImage = isCompleted ? UIImage(systemName: "chevron.down.circle.fill") : UIImage(systemName: "chevron.down.circle")
         cell.checkButton.setImage(buttonImage, for: .normal)
-        
-      
         
         return cell
     }

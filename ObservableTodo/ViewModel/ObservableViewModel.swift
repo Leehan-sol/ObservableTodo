@@ -7,9 +7,10 @@
 
 import Foundation
 
+// MARK: - ObservableVMProtocol
 protocol ObservableVMProtocol {
     var observableTodo: Observable<[TodoModel]> { get }
-//    var observableDone: Observable<[TodoModel]> { get }
+    var observableDone: Observable<[TodoModel]> { get }
     var todoCount: Int { get }
     var todoDescription: (Int) -> String? { get }
     func addTodo(description: String, isCompleted: Bool)
@@ -19,20 +20,21 @@ protocol ObservableVMProtocol {
 }
 
 
+// MARK: - ObservableViewModel
 class ObservableViewModel: ObservableVMProtocol {
     
     var observableTodo: Observable<[TodoModel]> = Observable([])
     
-//    var observableDone: Observable<[TodoModel]> {
-//         return Observable(observableTodo.value.filter { $0.isCompleted })
-//     }
+    var observableDone: Observable<[TodoModel]> {
+        return Observable(observableTodo.value.filter { $0.isCompleted })
+     }
     
     // Todo 개수
     var todoCount: Int {
         return observableTodo.value.count
     }
     
-    // Todo description
+    // Todo 내용
     var todoDescription: (Int) -> String? {
         return { [weak self] index in
             return self?.todoDescription(at: index)
@@ -66,7 +68,7 @@ class ObservableViewModel: ObservableVMProtocol {
          observableTodo.value[index].isCompleted.toggle()
      }
     
-    // Todo 완료
+    // ✨ Todo 완료여부
     func todoCompleted(at index: Int) -> Bool {
         guard index >= 0, index < observableTodo.value.count else {
             return false
@@ -74,4 +76,5 @@ class ObservableViewModel: ObservableVMProtocol {
         return observableTodo.value[index].isCompleted
     }
     
+
 }

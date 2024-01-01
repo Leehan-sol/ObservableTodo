@@ -9,7 +9,7 @@ import UIKit
 
 class MainView: UIView {
     
-    // MARK: - UI Properties
+    // MARK: - UI Components
     let goTodoButton: UIButton = {
         let button = UIButton()
         button.setTitle("TodoList", for: .normal)
@@ -24,6 +24,7 @@ class MainView: UIView {
         return button
     }()
     
+    
     // MARK: - Life Cycle
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -35,11 +36,13 @@ class MainView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Func
+    
+    // MARK: - Method
     private func setUI(){
+        backgroundColor = .systemBackground
+        
         addSubview(goTodoButton)
         addSubview(goDoneButton)
-        self.backgroundColor = .systemBackground
         
         goTodoButton.translatesAutoresizingMaskIntoConstraints = false
         goDoneButton.translatesAutoresizingMaskIntoConstraints = false

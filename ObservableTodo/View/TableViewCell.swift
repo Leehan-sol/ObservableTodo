@@ -9,11 +9,9 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
     
-    private let viewModel = ObservableViewModel()
-    
     var callBackMethod: (() -> Void)?
     
-    // MARK: - UI Properties
+    // MARK: - UI Component
     let todoLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black

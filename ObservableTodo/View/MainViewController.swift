@@ -9,9 +9,12 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    // MARK: - Properties
     private let mainView = MainView()
     private let observableVM = ObservableViewModel()
     
+    
+    // MARK: - Life Cycle
     override func loadView() {
         view = mainView
     }
@@ -21,10 +24,13 @@ class MainViewController: UIViewController {
         setAddtarget()
     }
     
+    
+    // MARK: - Method
     private func setAddtarget() {
         mainView.goTodoButton.addTarget(self, action: #selector(goTodoButtonTapped), for: .touchUpInside)
         mainView.goDoneButton.addTarget(self, action: #selector(goDoneButtonTapped), for: .touchUpInside)
     }
+    
     
     // MARK: - @objc
     // 1. 뷰컨 생성 시 프로토콜 타입 뷰모델 의존성 주입

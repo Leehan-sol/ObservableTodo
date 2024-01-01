@@ -23,6 +23,7 @@
 		CC45BE592B42EC1A00023AFD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BE582B42EC1A00023AFD /* MainView.swift */; };
 		CC45BE5B2B42ED7200023AFD /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BE5A2B42ED7200023AFD /* DoneView.swift */; };
 		CC45BE5D2B42F0FF00023AFD /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BE5C2B42F0FF00023AFD /* TableViewCell.swift */; };
+		CC45BE5F2B43058100023AFD /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BE5E2B43058100023AFD /* TodoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		CC45BE582B42EC1A00023AFD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		CC45BE5A2B42ED7200023AFD /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
 		CC45BE5C2B42F0FF00023AFD /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		CC45BE5E2B43058100023AFD /* TodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			children = (
 				CC45BE582B42EC1A00023AFD /* MainView.swift */,
 				CC45BE542B42EBAB00023AFD /* MainViewController.swift */,
+				CC45BE5E2B43058100023AFD /* TodoView.swift */,
 				CC45BE1F2B4285DD00023AFD /* TodoViewControllerViewController.swift */,
 				CC45BE5A2B42ED7200023AFD /* DoneView.swift */,
 				CC45BE562B42EBB500023AFD /* DoneViewController.swift */,
@@ -308,6 +311,7 @@
 				CC45BE202B4285DD00023AFD /* TodoViewControllerViewController.swift in Sources */,
 				CC45BE4E2B42873200023AFD /* Observable.swift in Sources */,
 				CC45BE4C2B42869900023AFD /* TodoModel.swift in Sources */,
+				CC45BE5F2B43058100023AFD /* TodoView.swift in Sources */,
 				CC45BE5D2B42F0FF00023AFD /* TableViewCell.swift in Sources */,
 				CC45BE1C2B4285DD00023AFD /* AppDelegate.swift in Sources */,
 				CC45BE1E2B4285DD00023AFD /* SceneDelegate.swift in Sources */,
