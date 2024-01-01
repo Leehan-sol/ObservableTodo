@@ -9,7 +9,7 @@ import Foundation
 
 class Observable<T> {
 
-    // 3. listner호출됨
+    // 4. listner호출됨
     var value: T {
         didSet {
             self.listener?(value)

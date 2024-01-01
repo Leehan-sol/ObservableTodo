@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		CC45BE1C2B4285DD00023AFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BE1B2B4285DD00023AFD /* AppDelegate.swift */; };
 		CC45BE1E2B4285DD00023AFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BE1D2B4285DD00023AFD /* SceneDelegate.swift */; };
-		CC45BE202B4285DD00023AFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BE1F2B4285DD00023AFD /* ViewController.swift */; };
+		CC45BE202B4285DD00023AFD /* TodoViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BE1F2B4285DD00023AFD /* TodoViewControllerViewController.swift */; };
 		CC45BE252B4285DE00023AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC45BE242B4285DE00023AFD /* Assets.xcassets */; };
 		CC45BE282B4285DE00023AFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC45BE262B4285DE00023AFD /* LaunchScreen.storyboard */; };
 		CC45BE332B4285DE00023AFD /* ObservableTodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BE322B4285DE00023AFD /* ObservableTodoTests.swift */; };
@@ -18,6 +18,11 @@
 		CC45BE4C2B42869900023AFD /* TodoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BE4B2B42869900023AFD /* TodoModel.swift */; };
 		CC45BE4E2B42873200023AFD /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BE4D2B42873200023AFD /* Observable.swift */; };
 		CC45BE502B42874500023AFD /* ObservableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BE4F2B42874500023AFD /* ObservableViewModel.swift */; };
+		CC45BE552B42EBAB00023AFD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BE542B42EBAB00023AFD /* MainViewController.swift */; };
+		CC45BE572B42EBB500023AFD /* DoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BE562B42EBB500023AFD /* DoneViewController.swift */; };
+		CC45BE592B42EC1A00023AFD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BE582B42EC1A00023AFD /* MainView.swift */; };
+		CC45BE5B2B42ED7200023AFD /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BE5A2B42ED7200023AFD /* DoneView.swift */; };
+		CC45BE5D2B42F0FF00023AFD /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BE5C2B42F0FF00023AFD /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +46,7 @@
 		CC45BE182B4285DD00023AFD /* ObservableTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObservableTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC45BE1B2B4285DD00023AFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC45BE1D2B4285DD00023AFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CC45BE1F2B4285DD00023AFD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CC45BE1F2B4285DD00023AFD /* TodoViewControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewControllerViewController.swift; sourceTree = "<group>"; };
 		CC45BE242B4285DE00023AFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC45BE272B4285DE00023AFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC45BE292B4285DE00023AFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,6 +58,11 @@
 		CC45BE4B2B42869900023AFD /* TodoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoModel.swift; sourceTree = "<group>"; };
 		CC45BE4D2B42873200023AFD /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		CC45BE4F2B42874500023AFD /* ObservableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableViewModel.swift; sourceTree = "<group>"; };
+		CC45BE542B42EBAB00023AFD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CC45BE562B42EBB500023AFD /* DoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneViewController.swift; sourceTree = "<group>"; };
+		CC45BE582B42EC1A00023AFD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		CC45BE5A2B42ED7200023AFD /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
+		CC45BE5C2B42F0FF00023AFD /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,10 +115,9 @@
 			children = (
 				CC45BE1B2B4285DD00023AFD /* AppDelegate.swift */,
 				CC45BE1D2B4285DD00023AFD /* SceneDelegate.swift */,
-				CC45BE4B2B42869900023AFD /* TodoModel.swift */,
-				CC45BE4D2B42873200023AFD /* Observable.swift */,
-				CC45BE1F2B4285DD00023AFD /* ViewController.swift */,
-				CC45BE4F2B42874500023AFD /* ObservableViewModel.swift */,
+				CC45BE512B42EA8E00023AFD /* Model */,
+				CC45BE522B42EB2800023AFD /* View */,
+				CC45BE532B42EB5200023AFD /* ViewModel */,
 				CC45BE242B4285DE00023AFD /* Assets.xcassets */,
 				CC45BE262B4285DE00023AFD /* LaunchScreen.storyboard */,
 				CC45BE292B4285DE00023AFD /* Info.plist */,
@@ -131,6 +140,36 @@
 				CC45BE3E2B4285DE00023AFD /* ObservableTodoUITestsLaunchTests.swift */,
 			);
 			path = ObservableTodoUITests;
+			sourceTree = "<group>";
+		};
+		CC45BE512B42EA8E00023AFD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC45BE4B2B42869900023AFD /* TodoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CC45BE522B42EB2800023AFD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CC45BE582B42EC1A00023AFD /* MainView.swift */,
+				CC45BE542B42EBAB00023AFD /* MainViewController.swift */,
+				CC45BE1F2B4285DD00023AFD /* TodoViewControllerViewController.swift */,
+				CC45BE5A2B42ED7200023AFD /* DoneView.swift */,
+				CC45BE562B42EBB500023AFD /* DoneViewController.swift */,
+				CC45BE5C2B42F0FF00023AFD /* TableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CC45BE532B42EB5200023AFD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CC45BE4D2B42873200023AFD /* Observable.swift */,
+				CC45BE4F2B42874500023AFD /* ObservableViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,11 +302,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC45BE202B4285DD00023AFD /* ViewController.swift in Sources */,
+				CC45BE572B42EBB500023AFD /* DoneViewController.swift in Sources */,
+				CC45BE592B42EC1A00023AFD /* MainView.swift in Sources */,
+				CC45BE552B42EBAB00023AFD /* MainViewController.swift in Sources */,
+				CC45BE202B4285DD00023AFD /* TodoViewControllerViewController.swift in Sources */,
 				CC45BE4E2B42873200023AFD /* Observable.swift in Sources */,
 				CC45BE4C2B42869900023AFD /* TodoModel.swift in Sources */,
+				CC45BE5D2B42F0FF00023AFD /* TableViewCell.swift in Sources */,
 				CC45BE1C2B4285DD00023AFD /* AppDelegate.swift in Sources */,
 				CC45BE1E2B4285DD00023AFD /* SceneDelegate.swift in Sources */,
+				CC45BE5B2B42ED7200023AFD /* DoneView.swift in Sources */,
 				CC45BE502B42874500023AFD /* ObservableViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

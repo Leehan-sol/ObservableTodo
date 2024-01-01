@@ -9,4 +9,5 @@ import Foundation
 
 struct TodoModel {
     let description: String
+    var isCompleted: Bool
 }
