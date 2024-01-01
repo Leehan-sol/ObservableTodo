@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ViewModelProtocol {
-    var observableTodo: Observable<TodoModel> { get }
+    var observableTodo: Observable<[TodoModel]> { get }
     var todoCount: Int { get }
     var todoDescription: (Int) -> String? { get }
     func addTodo(description: String)
@@ -18,10 +18,11 @@ protocol ViewModelProtocol {
 
 class ObservableViewModel: ViewModelProtocol {
     
-    var observableTodo: Observable<TodoModel> = Observable(todo: [])
+    var observableTodo: Observable<[TodoModel]> = Observable([])
+    
     
     var todoCount: Int {
-        return observableTodo.todo.count
+        return observableTodo.value.count
     }
     
     var todoDescription: (Int) -> String? {
@@ -30,20 +31,23 @@ class ObservableViewModel: ViewModelProtocol {
         }
     }
     
-    // 2. observableTodo.todo에 추가됨
+    
+    func todoDescription(at index: Int) -> String? {
+        guard index >= 0, index < observableTodo.value.count else {
+            return nil
+        }
+        return observableTodo.value[index].description
+    }
+    
     func addTodo(description: String) {
-        observableTodo.todo.append(TodoModel(description: description))
+        let newTodo = TodoModel(description: description)
+        observableTodo.value.append(newTodo)
     }
     
     func removeTodo(at index: Int) {
-        observableTodo.todo.remove(at: index)
+        observableTodo.value.remove(at: index)
     }
     
-    func todoDescription(at index: Int) -> String? {
-        guard index >= 0, index < observableTodo.todo.count else {
-            return nil
-        }
-        return observableTodo.todo[index].description
-    }
+ 
     
 }

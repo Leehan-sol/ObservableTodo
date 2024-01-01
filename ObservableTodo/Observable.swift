@@ -10,20 +10,20 @@ import Foundation
 class Observable<T> {
 
     // 3. listner호출됨
-    var todo: [T] = [] {
+    var value: T {
         didSet {
-            self.listener?(todo)
+            self.listener?(value)
         }
     }
     
-    init(todo: [T]) {
-        self.todo = todo
+    init(_ value: T) {
+        self.value = value
     }
     
-    var listener: (([T]) -> Void)?
+    var listener: ((T) -> Void)?
     
-    func bind(_ listener: @escaping ([T]) -> Void) {
-        listener(todo)
+    func bind(_ listener: @escaping (T) -> Void) {
+        listener(value)
         self.listener = listener
     }
     
