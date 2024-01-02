@@ -41,7 +41,7 @@ class DoneViewController: UIViewController {
         doneView.tableView.register(TableViewCell.self, forCellReuseIdentifier: "customCell")
     }
     
-    //  doneList가 변하면 didSet호출시 실행 될 함수 정의
+    // doneList가 변하면 didSet호출, 실행 될 함수 정의
     private func setBindings(){
         viewModel.observableTodo.bind { [weak self] done in
             self?.doneView.tableView.reloadData()
@@ -64,7 +64,12 @@ extension DoneViewController: UITableViewDataSource {
         }
         
         // ✨ 필터된것만 보여주도록 수정, 이렇게 필터해서 쓰면 정렬이 안됨
-        cell.todoLabel.text = viewModel.observableDone.value[indexPath.row].description
+        let description = viewModel.observableDone.value[indexPath.row].description
+        cell.todoLabel.text = description
+        
+        cell.callBackMethod = { [weak self] in
+            self?.viewModel.removeDone(description: description)
+        }
         
         let isCompleted = viewModel.observableDone.value[indexPath.row].isCompleted
         let buttonImage = isCompleted ? UIImage(systemName: "chevron.down.circle.fill") : UIImage(systemName: "chevron.down.circle")

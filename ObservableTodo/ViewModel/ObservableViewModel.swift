@@ -17,6 +17,7 @@ protocol ObservableVMProtocol {
     func removeTodo(at index: Int)
     func toggleTodo(at index: Int)
     func todoCompleted(at index: Int) -> Bool
+    func removeDone(description: String)
 }
 
 
@@ -27,7 +28,7 @@ class ObservableViewModel: ObservableVMProtocol {
     
     var observableDone: Observable<[TodoModel]> {
         return Observable(observableTodo.value.filter { $0.isCompleted })
-     }
+    }
     
     // Todo 개수
     var todoCount: Int {
@@ -62,11 +63,11 @@ class ObservableViewModel: ObservableVMProtocol {
     
     // Todo 토글
     func toggleTodo(at index: Int) {
-         guard index >= 0, index < observableTodo.value.count else {
-             return
-         }
-         observableTodo.value[index].isCompleted.toggle()
-     }
+        guard index >= 0, index < observableTodo.value.count else {
+            return
+        }
+        observableTodo.value[index].isCompleted.toggle()
+    }
     
     // ✨ Todo 완료여부
     func todoCompleted(at index: Int) -> Bool {
@@ -76,5 +77,11 @@ class ObservableViewModel: ObservableVMProtocol {
         return observableTodo.value[index].isCompleted
     }
     
-
+    func removeDone(description: String) {
+        if let index = observableTodo.value.firstIndex(where: { $0.description == description && $0.isCompleted }) {
+            observableTodo.value[index].isCompleted = false
+        }
+    }
+    
+    
 }
