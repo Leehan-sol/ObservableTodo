@@ -55,7 +55,7 @@ class DoneViewController: UIViewController {
 extension DoneViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.observableDone.value.count
+        return viewModel.doneCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,18 +63,15 @@ extension DoneViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        // ✨ 필터된것만 보여주도록 수정, 이렇게 필터해서 쓰면 정렬이 안됨
-        let description = viewModel.observableDone.value[indexPath.row].description
-        cell.todoLabel.text = description
+        let description = viewModel.doneDescription(indexPath.row)
         
         cell.callBackMethod = { [weak self] in
-            self?.viewModel.removeDone(description: description)
+            self?.viewModel.removeDone(description: description!)
         }
         
-        let isCompleted = viewModel.observableDone.value[indexPath.row].isCompleted
-        let buttonImage = isCompleted ? UIImage(systemName: "chevron.down.circle.fill") : UIImage(systemName: "chevron.down.circle")
-        cell.checkButton.setImage(buttonImage, for: .normal)
-        
+        cell.todoLabel.text = description
+        cell.checkButton.setImage(UIImage(systemName: viewModel.doneIsCompleted(indexPath.row)), for: .normal)
+    
         return cell
     }
     

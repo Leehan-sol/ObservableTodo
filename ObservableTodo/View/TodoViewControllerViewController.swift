@@ -109,11 +109,7 @@ extension TodoViewController: UITableViewDataSource {
         }
         
         cell.todoLabel.text = viewModel.todoDescription(indexPath.row)
-        
-        // ✨ 버튼 이미지 구하는 로직도 뷰모델로 빼기
-        let isCompleted = viewModel.todoCompleted(at: indexPath.row)
-        let buttonImage = isCompleted ? UIImage(systemName: "chevron.down.circle.fill") : UIImage(systemName: "chevron.down.circle")
-        cell.checkButton.setImage(buttonImage, for: .normal)
+        cell.checkButton.setImage(UIImage(systemName: viewModel.todoIsCompleted(indexPath.row)), for: .normal)
         
         return cell
     }

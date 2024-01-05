@@ -13,10 +13,13 @@ protocol ObservableVMProtocol {
     var observableDone: Observable<[TodoModel]> { get }
     var todoCount: Int { get }
     var todoDescription: (Int) -> String? { get }
+    var todoIsCompleted: (Int) -> String { get }
+    var doneCount: Int { get }
+    var doneDescription: (Int) -> String? { get }
+    var doneIsCompleted: (Int) -> String { get }
     func addTodo(description: String, isCompleted: Bool)
     func removeTodo(at index: Int)
     func toggleTodo(at index: Int)
-    func todoCompleted(at index: Int) -> Bool
     func removeDone(description: String)
 }
 
@@ -42,11 +45,26 @@ class ObservableViewModel: ObservableVMProtocol {
         }
     }
     
-    func todoDescription(at index: Int) -> String? {
-        guard index >= 0, index < observableTodo.value.count else {
-            return nil
+    // Todo isCompleted 상태
+    var todoIsCompleted: (Int) -> String {
+        return { [weak self] index in
+            return self?.todoCompleted(at: index) ?? "defaultImageName"
         }
-        return observableTodo.value[index].description
+    }
+    
+    var doneCount: Int {
+        return observableDone.value.count
+    }
+    
+    var doneDescription: (Int) -> String? {
+        return { [weak self] index in
+            return self?.doneDescription(at:index)}
+    }
+    
+    var doneIsCompleted: (Int) -> String {
+        return { [weak self] index in
+            return self?.doneCompleted(at: index) ?? "defaultImageName"
+        }
     }
     
     // 3. Observable의 value에 추가됨
@@ -69,18 +87,47 @@ class ObservableViewModel: ObservableVMProtocol {
         observableTodo.value[index].isCompleted.toggle()
     }
     
-    // ✨ Todo 완료여부
-    func todoCompleted(at index: Int) -> Bool {
-        guard index >= 0, index < observableTodo.value.count else {
-            return false
-        }
-        return observableTodo.value[index].isCompleted
-    }
-    
+    // DoneTodo 삭제
     func removeDone(description: String) {
         if let index = observableTodo.value.firstIndex(where: { $0.description == description && $0.isCompleted }) {
             observableTodo.value[index].isCompleted = false
         }
+    }
+    
+    // Todo 내용
+    func todoDescription(at index: Int) -> String? {
+        guard index >= 0, index < observableTodo.value.count else {
+            return nil
+        }
+        return observableTodo.value[index].description
+    }
+    
+    // Todo isCompleted 상태
+    func todoCompleted(at index: Int) -> String {
+        guard index >= 0, index < observableTodo.value.count else {
+            return "defaultImageName"
+        }
+        
+        let isCompleted = observableTodo.value[index].isCompleted
+        return isCompleted ? "chevron.down.circle.fill" : "chevron.down.circle"
+    }
+    
+    // Done 내용
+    func doneDescription(at index: Int) -> String? {
+        guard index >= 0, index < observableDone.value.count else {
+            return nil
+        }
+        return observableDone.value[index].description
+    }
+    
+    // Done isCompleted 상태
+    func doneCompleted(at index: Int) -> String {
+        guard index >= 0, index < observableDone.value.count else {
+            return "defaultImageName"
+        }
+        
+        let isCompleted = observableDone.value[index].isCompleted
+        return isCompleted ? "chevron.down.circle.fill" : "chevron.down.circle"
     }
     
     
