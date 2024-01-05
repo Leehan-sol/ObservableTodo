@@ -43,7 +43,7 @@ class DoneViewController: UIViewController {
     
     // doneList가 변하면 didSet호출, 실행 될 함수 정의
     private func setBindings(){
-        viewModel.observableTodo.bind { [weak self] done in
+        viewModel.observableDone.bind { [weak self] done in
             self?.doneView.tableView.reloadData()
         }
     }
