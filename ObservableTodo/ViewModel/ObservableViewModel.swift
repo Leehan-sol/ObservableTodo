@@ -33,19 +33,19 @@ class ObservableViewModel: ObservableVMProtocol {
         return Observable(observableTodo.value.filter { $0.isCompleted })
     }
     
-    // Todo 개수
+    // Todo Count
     var todoCount: Int {
         return observableTodo.value.count
     }
     
-    // Todo 내용
+    // Todo Description
     var todoDescription: (Int) -> String? {
         return { [weak self] index in
             return self?.todoDescription(at: index)
         }
     }
     
-    // Todo isCompleted 상태
+    // Todo isCompleted
     var todoIsCompleted: (Int) -> String {
         return { [weak self] index in
             return self?.todoCompleted(at: index) ?? "defaultImageName"
@@ -87,14 +87,14 @@ class ObservableViewModel: ObservableVMProtocol {
         observableTodo.value[index].isCompleted.toggle()
     }
     
-    // DoneTodo 삭제
+    // Done 삭제
     func removeDone(description: String) {
         if let index = observableTodo.value.firstIndex(where: { $0.description == description && $0.isCompleted }) {
             observableTodo.value[index].isCompleted = false
         }
     }
     
-    // Todo 내용
+    // Todo Description (output)
     func todoDescription(at index: Int) -> String? {
         guard index >= 0, index < observableTodo.value.count else {
             return nil
@@ -102,7 +102,7 @@ class ObservableViewModel: ObservableVMProtocol {
         return observableTodo.value[index].description
     }
     
-    // Todo isCompleted 상태
+    // Todo isCompleted (output)
     func todoCompleted(at index: Int) -> String {
         guard index >= 0, index < observableTodo.value.count else {
             return "defaultImageName"
@@ -112,7 +112,6 @@ class ObservableViewModel: ObservableVMProtocol {
         return isCompleted ? "chevron.down.circle.fill" : "chevron.down.circle"
     }
     
-    // Done 내용
     func doneDescription(at index: Int) -> String? {
         guard index >= 0, index < observableDone.value.count else {
             return nil
@@ -120,7 +119,6 @@ class ObservableViewModel: ObservableVMProtocol {
         return observableDone.value[index].description
     }
     
-    // Done isCompleted 상태
     func doneCompleted(at index: Int) -> String {
         guard index >= 0, index < observableDone.value.count else {
             return "defaultImageName"
