@@ -63,10 +63,10 @@ extension DoneViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let description = viewModel.doneDescription(indexPath.row)
+        guard let description = viewModel.doneDescription(indexPath.row) else { return cell }
         
         cell.callBackMethod = { [weak self] in
-            self?.viewModel.removeDone(description: description!)
+            self?.viewModel.removeDone(description: description)
         }
         
         cell.todoLabel.text = description
